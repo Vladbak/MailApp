@@ -17,30 +17,14 @@ namespace MailClient
       
         public Form1()
         {
-            InitializeComponent();
-         
-            
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MailService.MailService ms = new MailService.MailService();
-            
-            
+            InitializeComponent();  
         }
 
         private void Send_button_Click(object sender, EventArgs e)
         {
             CreateMailForm cmf = new CreateMailForm();
-            cmf.ShowDialog();
-            
-            
+            cmf.ShowDialog();   
         }
-
-      
-
-    
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -61,7 +45,12 @@ namespace MailClient
 
         private void Refresh_button_Click(object sender, EventArgs e)
         {
-            
+            //Обновить таблицу исходящих писем
+            this.mailTableTableAdapter1.Fill(this.dataSetOut.MailTable, User.CurrentID);
+
+            //Обновить таблицу входящих писем
+            this.mailTableTableAdapter2.Fill(this.dataSetIn.MailTable, User.CurrentID);
+
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +80,5 @@ namespace MailClient
             }
         }
 
-    
     }
 }

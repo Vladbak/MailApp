@@ -42,17 +42,5 @@ namespace MailClient
 
         }
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.employeeTableTableAdapter.FillBy(this.mailServiceDBDataSet.EmployeeTable);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
     }
 }

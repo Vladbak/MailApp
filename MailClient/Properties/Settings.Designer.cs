@@ -25,16 +25,6 @@ namespace MailClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59811/MailService.asmx")]
-        public string MailClient_MailService_MailService {
-            get {
-                return ((string)(this["MailClient_MailService_MailService"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Corrector\\Test_proje" +
             "cts\\WebApplication1\\WebApplication1\\App_Data\\Database1.mdf;Integrated Security=T" +
@@ -42,6 +32,28 @@ namespace MailClient.Properties {
         public string Database1ConnectionString {
             get {
                 return ((string)(this["Database1ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Corrector\\Test_proje" +
+            "cts\\WebApplication1\\Web-Service\\App_Data\\MailServiceDB.mdf;Integrated Security=T" +
+            "rue")]
+        public string MailServiceDBConnectionString {
+            get {
+                return ((string)(this["MailServiceDBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:59242/MailService.asmx")]
+        public string MailClient_MailService_MailService {
+            get {
+                return ((string)(this["MailClient_MailService_MailService"]));
             }
         }
     }

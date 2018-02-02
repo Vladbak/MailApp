@@ -27,11 +27,31 @@ namespace MailClient
         {
             //TextBox_Reciever.Text = DateTime.Now.ToString();
             MailService.MailService ms = new MailService.MailService();
-            if (!ms.Insert(RichTextBox_Letter.Text, System.DateTime.Now, TextBox_title_letter.Text, 1, 2))
+            if (!ms.Insert(RichTextBox_Letter.Text, System.DateTime.Now, TextBox_title_letter.Text, User.CurrentID, Convert.ToInt32(comboBox_reciever.SelectedValue))) 
                 MessageBox.Show("Ошибка");
             else
                 MessageBox.Show("Сообщение отправлено");
             Close();
+
+        }
+
+        private void CreateMailForm_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "mailServiceDBDataSet.EmployeeTable". При необходимости она может быть перемещена или удалена.
+            this.employeeTableTableAdapter.Fill(this.mailServiceDBDataSet.EmployeeTable);
+
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.employeeTableTableAdapter.FillBy(this.mailServiceDBDataSet.EmployeeTable);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
 
         }
     }

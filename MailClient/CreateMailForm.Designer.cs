@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.TextBox_Reciever = new System.Windows.Forms.TextBox();
             this.TextBox_title_letter = new System.Windows.Forms.TextBox();
             this.RichTextBox_Letter = new System.Windows.Forms.RichTextBox();
             this.Button_send_mail = new System.Windows.Forms.Button();
+            this.comboBox_reciever = new System.Windows.Forms.ComboBox();
+            this.employeeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mailServiceDBDataSet = new MailClient.MailServiceDBDataSet();
+            this.employeeTableTableAdapter = new MailClient.MailServiceDBDataSetTableAdapters.EmployeeTableTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailServiceDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -78,14 +84,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Текст письма";
             // 
-            // TextBox_Reciever
-            // 
-            this.TextBox_Reciever.Location = new System.Drawing.Point(74, 44);
-            this.TextBox_Reciever.MaxLength = 1000;
-            this.TextBox_Reciever.Name = "TextBox_Reciever";
-            this.TextBox_Reciever.Size = new System.Drawing.Size(284, 20);
-            this.TextBox_Reciever.TabIndex = 7;
-            // 
             // TextBox_title_letter
             // 
             this.TextBox_title_letter.Location = new System.Drawing.Point(74, 78);
@@ -113,15 +111,40 @@
             this.Button_send_mail.UseVisualStyleBackColor = true;
             this.Button_send_mail.Click += new System.EventHandler(this.Send_mail_button_Click);
             // 
+            // comboBox_reciever
+            // 
+            this.comboBox_reciever.DataSource = this.employeeTableBindingSource;
+            this.comboBox_reciever.DisplayMember = "Surname";
+            this.comboBox_reciever.FormattingEnabled = true;
+            this.comboBox_reciever.Location = new System.Drawing.Point(74, 46);
+            this.comboBox_reciever.Name = "comboBox_reciever";
+            this.comboBox_reciever.Size = new System.Drawing.Size(284, 21);
+            this.comboBox_reciever.TabIndex = 11;
+            this.comboBox_reciever.ValueMember = "Id";
+            // 
+            // employeeTableBindingSource
+            // 
+            this.employeeTableBindingSource.DataMember = "EmployeeTable";
+            this.employeeTableBindingSource.DataSource = this.mailServiceDBDataSet;
+            // 
+            // mailServiceDBDataSet
+            // 
+            this.mailServiceDBDataSet.DataSetName = "MailServiceDBDataSet";
+            this.mailServiceDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeTableTableAdapter
+            // 
+            this.employeeTableTableAdapter.ClearBeforeFill = true;
+            // 
             // CreateMailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 342);
+            this.ClientSize = new System.Drawing.Size(378, 350);
+            this.Controls.Add(this.comboBox_reciever);
             this.Controls.Add(this.Button_send_mail);
             this.Controls.Add(this.RichTextBox_Letter);
             this.Controls.Add(this.TextBox_title_letter);
-            this.Controls.Add(this.TextBox_Reciever);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
@@ -129,6 +152,9 @@
             this.Name = "CreateMailForm";
             this.ShowIcon = false;
             this.Text = "Письмо";
+            this.Load += new System.EventHandler(this.CreateMailForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.employeeTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailServiceDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,9 +166,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TextBox_Reciever;
         private System.Windows.Forms.TextBox TextBox_title_letter;
         private System.Windows.Forms.RichTextBox RichTextBox_Letter;
         private System.Windows.Forms.Button Button_send_mail;
+        private System.Windows.Forms.ComboBox comboBox_reciever;
+        private MailServiceDBDataSet mailServiceDBDataSet;
+        private System.Windows.Forms.BindingSource employeeTableBindingSource;
+        private MailServiceDBDataSetTableAdapters.EmployeeTableTableAdapter employeeTableTableAdapter;
     }
 }

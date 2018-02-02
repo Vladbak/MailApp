@@ -20,6 +20,7 @@ namespace MailClient.MailService {
     using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Data;
     
     
     /// <remarks/>
@@ -32,6 +33,12 @@ namespace MailClient.MailService {
         private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback NewUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback LoginOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -76,6 +83,15 @@ namespace MailClient.MailService {
         
         /// <remarks/>
         public event InsertCompletedEventHandler InsertCompleted;
+        
+        /// <remarks/>
+        public event GetMailCompletedEventHandler GetMailCompleted;
+        
+        /// <remarks/>
+        public event NewUserCompletedEventHandler NewUserCompleted;
+        
+        /// <remarks/>
+        public event LoginCompletedEventHandler LoginCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -138,6 +154,99 @@ namespace MailClient.MailService {
             if ((this.InsertCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.InsertCompleted(this, new InsertCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetMail(int Mail_id) {
+            object[] results = this.Invoke("GetMail", new object[] {
+                        Mail_id});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMailAsync(int Mail_id) {
+            this.GetMailAsync(Mail_id, null);
+        }
+        
+        /// <remarks/>
+        public void GetMailAsync(int Mail_id, object userState) {
+            if ((this.GetMailOperationCompleted == null)) {
+                this.GetMailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMailOperationCompleted);
+            }
+            this.InvokeAsync("GetMail", new object[] {
+                        Mail_id}, this.GetMailOperationCompleted, userState);
+        }
+        
+        private void OnGetMailOperationCompleted(object arg) {
+            if ((this.GetMailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMailCompleted(this, new GetMailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/NewUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int NewUser(string Name, string Surname, string Password) {
+            object[] results = this.Invoke("NewUser", new object[] {
+                        Name,
+                        Surname,
+                        Password});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void NewUserAsync(string Name, string Surname, string Password) {
+            this.NewUserAsync(Name, Surname, Password, null);
+        }
+        
+        /// <remarks/>
+        public void NewUserAsync(string Name, string Surname, string Password, object userState) {
+            if ((this.NewUserOperationCompleted == null)) {
+                this.NewUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNewUserOperationCompleted);
+            }
+            this.InvokeAsync("NewUser", new object[] {
+                        Name,
+                        Surname,
+                        Password}, this.NewUserOperationCompleted, userState);
+        }
+        
+        private void OnNewUserOperationCompleted(object arg) {
+            if ((this.NewUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.NewUserCompleted(this, new NewUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int Login(string id, string Password) {
+            object[] results = this.Invoke("Login", new object[] {
+                        id,
+                        Password});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoginAsync(string id, string Password) {
+            this.LoginAsync(id, Password, null);
+        }
+        
+        /// <remarks/>
+        public void LoginAsync(string id, string Password, object userState) {
+            if ((this.LoginOperationCompleted == null)) {
+                this.LoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoginOperationCompleted);
+            }
+            this.InvokeAsync("Login", new object[] {
+                        id,
+                        Password}, this.LoginOperationCompleted, userState);
+        }
+        
+        private void OnLoginOperationCompleted(object arg) {
+            if ((this.LoginCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoginCompleted(this, new LoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -208,6 +317,84 @@ namespace MailClient.MailService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    public delegate void GetMailCompletedEventHandler(object sender, GetMailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    public delegate void NewUserCompletedEventHandler(object sender, NewUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class NewUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal NewUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    public delegate void LoginCompletedEventHandler(object sender, LoginCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1087.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

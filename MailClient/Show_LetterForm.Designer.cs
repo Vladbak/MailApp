@@ -123,6 +123,7 @@
             // 
             this.richTextBox_letter.Location = new System.Drawing.Point(12, 102);
             this.richTextBox_letter.Name = "richTextBox_letter";
+            this.richTextBox_letter.ReadOnly = true;
             this.richTextBox_letter.Size = new System.Drawing.Size(628, 186);
             this.richTextBox_letter.TabIndex = 8;
             this.richTextBox_letter.Text = "";

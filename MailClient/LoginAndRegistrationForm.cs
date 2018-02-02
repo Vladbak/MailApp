@@ -22,12 +22,6 @@ namespace MailClient
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private bool Checkinput()
         {
             if (textBox_Login.TextLength<1)
@@ -68,7 +62,6 @@ namespace MailClient
                 {
                     MessageBox.Show("Не удалось зарегистрировать пользователя");
                     User.CurrentID = -1;
-                    wasConnected = false; 
                 }
                 else
                 {
@@ -85,7 +78,8 @@ namespace MailClient
             {
                 int entered_id;
                 int result = -1;
-                try {
+                try
+                {
                     entered_id = Convert.ToInt32(textBox_Login.Text);
                 }
                 catch
@@ -114,10 +108,6 @@ namespace MailClient
             
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -151,10 +141,5 @@ namespace MailClient
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-
-        }
     }
 }

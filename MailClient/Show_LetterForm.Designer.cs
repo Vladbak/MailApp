@@ -85,9 +85,9 @@
             this.label_reciever.Location = new System.Drawing.Point(201, 36);
             this.label_reciever.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_reciever.Name = "label_reciever";
-            this.label_reciever.Size = new System.Drawing.Size(45, 19);
+            this.label_reciever.Size = new System.Drawing.Size(68, 19);
             this.label_reciever.TabIndex = 4;
-            this.label_reciever.Text = "label5";
+            this.label_reciever.Text = "Ошибка!";
             // 
             // label_Sender
             // 
@@ -95,9 +95,9 @@
             this.label_Sender.Location = new System.Drawing.Point(201, 17);
             this.label_Sender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Sender.Name = "label_Sender";
-            this.label_Sender.Size = new System.Drawing.Size(45, 19);
+            this.label_Sender.Size = new System.Drawing.Size(68, 19);
             this.label_Sender.TabIndex = 3;
-            this.label_Sender.Text = "label6";
+            this.label_Sender.Text = "Ошибка!";
             // 
             // label_title
             // 
@@ -105,9 +105,9 @@
             this.label_title.Location = new System.Drawing.Point(201, 73);
             this.label_title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_title.Name = "label_title";
-            this.label_title.Size = new System.Drawing.Size(45, 19);
+            this.label_title.Size = new System.Drawing.Size(68, 19);
             this.label_title.TabIndex = 7;
-            this.label_title.Text = "label7";
+            this.label_title.Text = "Ошибка!";
             // 
             // label_time
             // 
@@ -115,9 +115,9 @@
             this.label_time.Location = new System.Drawing.Point(201, 55);
             this.label_time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_time.Name = "label_time";
-            this.label_time.Size = new System.Drawing.Size(45, 19);
+            this.label_time.Size = new System.Drawing.Size(68, 19);
             this.label_time.TabIndex = 6;
-            this.label_time.Text = "label8";
+            this.label_time.Text = "Ошибка!";
             // 
             // richTextBox_letter
             // 
@@ -142,7 +142,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Show_Letter";
             this.ShowIcon = false;
             this.Text = "Письмо";

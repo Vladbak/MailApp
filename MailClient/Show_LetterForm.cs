@@ -24,11 +24,14 @@ namespace MailClient
         {
             using (MailService.MailService ms = new MailService.MailService())
             {
+                
                 DataSet ds = ms.GetMail(Letter_id);
-                label_reciever.Text = ds.Tables[0].Rows[0].Field<Int32>("recieverid").ToString();
-                label_Sender.Text = ds.Tables[0].Rows[0].Field<Int32>("senderid").ToString();
-                label_time.Text = ds.Tables[0].Rows[0].Field<DateTime>("time").ToString();
-                label_title.Text = ds.Tables[0].Rows[0].Field<string>("title").ToString();
+                DataRow row = ds.Tables[0].Rows[0];
+                label_reciever.Text = row.Field<string>("recieverSurname").ToString() +" "+ row.Field<string>("recieverName").ToString();
+                label_Sender.Text = row.Field<string>("senderSurname").ToString() + " " + row.Field<string>("senderName").ToString();
+                label_time.Text = row.Field<DateTime>("time").ToString();
+                label_title.Text = row.Field<string>("title").ToString();
+                richTextBox_letter.Text = row.Field<string>("text").ToString();
             }
             
 

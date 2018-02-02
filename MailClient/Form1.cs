@@ -40,7 +40,31 @@ namespace MailClient
 
       
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // открываем форму регистрации или входа в приложение
+            LoginAndRegistrationForm lrf = new LoginAndRegistrationForm();
+            lrf.ShowDialog();
+            // Если не получилось зарегаться\войти\форма закрыта - выйти из приложения
+            if (User.CurrentID == -1)
+                Application.Exit();
+            //Обновить таблицу исходящих писем
+            this.mailTableTableAdapter1.Fill(this.dataSetOut.MailTable,   User.CurrentID);
+
+            //Обновить таблицу входящих писем
+            this.mailTableTableAdapter2.Fill(this.dataSetIn.MailTable,   User.CurrentID);
+
+
+        }
+
+        private void Refresh_button_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
             if (dgv == null)
@@ -51,22 +75,22 @@ namespace MailClient
                 show_letter_form.Letter_id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
                 show_letter_form.ShowDialog();
             }
-            
-            
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            LoginAndRegistrationForm lrf = new LoginAndRegistrationForm();
-            lrf.ShowDialog();
-            if (User.CurrentID == -1)
-                Application.Exit();
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
 
+            using (Show_Letter show_letter_form = new Show_Letter())
+            {
+                show_letter_form.Letter_id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
+                show_letter_form.ShowDialog();
+            }
         }
 
-        private void Refresh_button_Click(object sender, EventArgs e)
-        {
-            this.mailTableTableAdapter1.Fill(this.mailServiceDBDataSet1.MailTable);
-        }
+    
     }
 }

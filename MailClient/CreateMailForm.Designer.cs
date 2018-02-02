@@ -103,6 +103,7 @@
             // 
             // Button_send_mail
             // 
+            this.Button_send_mail.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Button_send_mail.Location = new System.Drawing.Point(16, 297);
             this.Button_send_mail.Name = "Button_send_mail";
             this.Button_send_mail.Size = new System.Drawing.Size(101, 33);
@@ -149,6 +150,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateMailForm";
             this.ShowIcon = false;
             this.Text = "Письмо";

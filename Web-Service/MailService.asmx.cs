@@ -37,8 +37,8 @@ namespace Web_Service
             {
                 SqlConnection connection = new SqlConnection(ConnectionString);
 
-                string insert_string = "insert into [MailTable] values (@text, @title, @time, @senderid, @recieverid)";
-                SqlCommand command = new SqlCommand(insert_string, connection);
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "insert into [MailTable] values (@text, @title, @time, @senderid, @recieverid)";
                 command.Parameters.AddWithValue("@text", text);
                 command.Parameters.AddWithValue("@time", time);
                 command.Parameters.AddWithValue("@title", title);
@@ -66,8 +66,12 @@ namespace Web_Service
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 DataSet ds = new DataSet();
-                string insert_string = "Select * from [Mail_table] where id = @Mail_id";
-                SqlCommand command = new SqlCommand(insert_string, connection);
+            
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "select m.title, m.text, m.time,  s1.Name as senderName, s1.Surname as senderSurname, s2.Name as recieverName , s2.Surname as recieverSurname from (select * from MailTable where id=@Mail_id) m," +
+                                        "(select Surname, name from [EmployeeTable] where id in (select SenderID from MailTable where id = @Mail_id)) s1," +
+                                        "(select Surname, name from [EmployeeTable] where id in (select RecieverID from MailTable where id = @Mail_id)) s2; ";
+
                 command.Parameters.AddWithValue("@Mail_id", Mail_id);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
 

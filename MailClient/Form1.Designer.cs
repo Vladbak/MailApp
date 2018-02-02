@@ -29,70 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.mailDataSet1 = new MailClient.MailDataSet();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.mailDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Send_button = new System.Windows.Forms.Button();
             this.Refresh_button = new System.Windows.Forms.Button();
-            this.mailtableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mail_tableTableAdapter = new MailClient.MailDataSetTableAdapters.Mail_tableTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.senderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.senderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recieverIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mailServiceDBDataSet1 = new MailClient.MailServiceDBDataSet();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recieverIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.senderIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.mailDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mailDataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mailtableBindingSource)).BeginInit();
+            this.recieverIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailTableTableAdapter1 = new MailClient.MailServiceDBDataSetTableAdapters.MailTableTableAdapter();
+            this.mailTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailServiceDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailTableBindingSource1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mailDataSet1
-            // 
-            this.mailDataSet1.DataSetName = "MailDataSet";
-            this.mailDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.textDataGridViewTextBoxColumn,
-            this.senderIDDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.timeDataGridViewTextBoxColumn,
-            this.recieverIDDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.mailtableBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(448, 332);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // mailDataSet1BindingSource
-            // 
-            this.mailDataSet1BindingSource.DataSource = this.mailDataSet1;
-            this.mailDataSet1BindingSource.Position = 0;
             // 
             // Send_button
             // 
@@ -112,15 +80,7 @@
             this.Refresh_button.TabIndex = 2;
             this.Refresh_button.Text = "Обновить";
             this.Refresh_button.UseVisualStyleBackColor = true;
-            // 
-            // mailtableBindingSource
-            // 
-            this.mailtableBindingSource.DataMember = "Mail_table";
-            this.mailtableBindingSource.DataSource = this.mailDataSet1BindingSource;
-            // 
-            // mail_tableTableAdapter
-            // 
-            this.mail_tableTableAdapter.ClearBeforeFill = true;
+            this.Refresh_button.Click += new System.EventHandler(this.Refresh_button_Click);
             // 
             // tabControl1
             // 
@@ -143,6 +103,26 @@
             this.tabPage1.Text = "Входящие";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.textDataGridViewTextBoxColumn,
+            this.titleDataGridViewTextBoxColumn,
+            this.timeDataGridViewTextBoxColumn,
+            this.senderIDDataGridViewTextBoxColumn,
+            this.recieverIDDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.mailTableBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(448, 332);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -163,11 +143,11 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn1,
             this.textDataGridViewTextBoxColumn1,
-            this.recieverIDDataGridViewTextBoxColumn1,
             this.titleDataGridViewTextBoxColumn1,
             this.timeDataGridViewTextBoxColumn1,
-            this.senderIDDataGridViewTextBoxColumn1});
-            this.dataGridView2.DataSource = this.mailtableBindingSource;
+            this.senderIDDataGridViewTextBoxColumn1,
+            this.recieverIDDataGridViewTextBoxColumn1});
+            this.dataGridView2.DataSource = this.mailTableBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(6, 6);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -176,13 +156,11 @@
             // 
             // idDataGridViewTextBoxColumn
             // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Visible = false;
-            this.idDataGridViewTextBoxColumn.Width = 41;
             // 
             // textDataGridViewTextBoxColumn
             // 
@@ -190,32 +168,27 @@
             this.textDataGridViewTextBoxColumn.HeaderText = "Text";
             this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
             this.textDataGridViewTextBoxColumn.ReadOnly = true;
-            this.textDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // senderIDDataGridViewTextBoxColumn
-            // 
-            this.senderIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.senderIDDataGridViewTextBoxColumn.DataPropertyName = "SenderID";
-            this.senderIDDataGridViewTextBoxColumn.HeaderText = "Отправитель";
-            this.senderIDDataGridViewTextBoxColumn.Name = "senderIDDataGridViewTextBoxColumn";
-            this.senderIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.senderIDDataGridViewTextBoxColumn.Width = 98;
             // 
             // titleDataGridViewTextBoxColumn
             // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // timeDataGridViewTextBoxColumn
             // 
-            this.timeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Время отправления";
+            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
             this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
             this.timeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // senderIDDataGridViewTextBoxColumn
+            // 
+            this.senderIDDataGridViewTextBoxColumn.DataPropertyName = "SenderID";
+            this.senderIDDataGridViewTextBoxColumn.HeaderText = "SenderID";
+            this.senderIDDataGridViewTextBoxColumn.Name = "senderIDDataGridViewTextBoxColumn";
+            this.senderIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // recieverIDDataGridViewTextBoxColumn
             // 
@@ -223,7 +196,16 @@
             this.recieverIDDataGridViewTextBoxColumn.HeaderText = "RecieverID";
             this.recieverIDDataGridViewTextBoxColumn.Name = "recieverIDDataGridViewTextBoxColumn";
             this.recieverIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.recieverIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // mailTableBindingSource
+            // 
+            this.mailTableBindingSource.DataMember = "MailTable";
+            this.mailTableBindingSource.DataSource = this.mailServiceDBDataSet1;
+            // 
+            // mailServiceDBDataSet1
+            // 
+            this.mailServiceDBDataSet1.DataSetName = "MailServiceDBDataSet";
+            this.mailServiceDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -239,33 +221,20 @@
             this.textDataGridViewTextBoxColumn1.HeaderText = "Text";
             this.textDataGridViewTextBoxColumn1.Name = "textDataGridViewTextBoxColumn1";
             this.textDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.textDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // recieverIDDataGridViewTextBoxColumn1
-            // 
-            this.recieverIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.recieverIDDataGridViewTextBoxColumn1.DataPropertyName = "RecieverID";
-            this.recieverIDDataGridViewTextBoxColumn1.HeaderText = "Получатель";
-            this.recieverIDDataGridViewTextBoxColumn1.Name = "recieverIDDataGridViewTextBoxColumn1";
-            this.recieverIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.recieverIDDataGridViewTextBoxColumn1.Width = 91;
             // 
             // titleDataGridViewTextBoxColumn1
             // 
-            this.titleDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.titleDataGridViewTextBoxColumn1.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn1.HeaderText = "Название";
+            this.titleDataGridViewTextBoxColumn1.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn1.Name = "titleDataGridViewTextBoxColumn1";
             this.titleDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // timeDataGridViewTextBoxColumn1
             // 
-            this.timeDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.timeDataGridViewTextBoxColumn1.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn1.HeaderText = "Время отправления";
+            this.timeDataGridViewTextBoxColumn1.HeaderText = "Time";
             this.timeDataGridViewTextBoxColumn1.Name = "timeDataGridViewTextBoxColumn1";
             this.timeDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.timeDataGridViewTextBoxColumn1.Width = 122;
             // 
             // senderIDDataGridViewTextBoxColumn1
             // 
@@ -273,7 +242,22 @@
             this.senderIDDataGridViewTextBoxColumn1.HeaderText = "SenderID";
             this.senderIDDataGridViewTextBoxColumn1.Name = "senderIDDataGridViewTextBoxColumn1";
             this.senderIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.senderIDDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // recieverIDDataGridViewTextBoxColumn1
+            // 
+            this.recieverIDDataGridViewTextBoxColumn1.DataPropertyName = "RecieverID";
+            this.recieverIDDataGridViewTextBoxColumn1.HeaderText = "RecieverID";
+            this.recieverIDDataGridViewTextBoxColumn1.Name = "recieverIDDataGridViewTextBoxColumn1";
+            this.recieverIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // mailTableTableAdapter1
+            // 
+            this.mailTableTableAdapter1.ClearBeforeFill = true;
+            // 
+            // mailTableBindingSource1
+            // 
+            this.mailTableBindingSource1.DataMember = "MailTable";
+            this.mailTableBindingSource1.DataSource = this.mailServiceDBDataSet1;
             // 
             // Form1
             // 
@@ -283,45 +267,48 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Refresh_button);
             this.Controls.Add(this.Send_button);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.mailDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mailDataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mailtableBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailServiceDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailTableBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private MailDataSet mailDataSet1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource mailDataSet1BindingSource;
         private System.Windows.Forms.Button Send_button;
         private System.Windows.Forms.Button Refresh_button;
-        private System.Windows.Forms.BindingSource mailtableBindingSource;
-        private MailDataSetTableAdapters.Mail_tableTableAdapter mail_tableTableAdapter;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private MailServiceDBDataSet mailServiceDBDataSet;
+        private MailServiceDBDataSetTableAdapters.MailTableTableAdapter mailTableTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private MailServiceDBDataSet mailServiceDBDataSet1;
+        private System.Windows.Forms.BindingSource mailTableBindingSource;
+        private MailServiceDBDataSetTableAdapters.MailTableTableAdapter mailTableTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn senderIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn senderIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn recieverIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn recieverIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn senderIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recieverIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource mailTableBindingSource1;
     }
 }
 

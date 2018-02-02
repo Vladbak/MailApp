@@ -131,7 +131,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59811</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59811/</IISUrl>
+          <IISUrl>http://localhost:59811/MailService.asmx</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:59811/MailService.asmx</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

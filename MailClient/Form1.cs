@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,11 +14,13 @@ namespace MailClient
 {
     public partial class Form1 : Form
     {
-        DataSet ds = new DataSet();
-
+      
         public Form1()
         {
             InitializeComponent();
+         
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,21 +38,35 @@ namespace MailClient
             
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "mailDataSet1.Mail_table". При необходимости она может быть перемещена или удалена.
-            this.mail_tableTableAdapter.Fill(this.mailDataSet1.Mail_table);
-
-        }
+      
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
             if (dgv == null)
                 return;
-           
+
+            using (Show_Letter show_letter_form = new Show_Letter())
+            {
+                show_letter_form.Letter_id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
+                show_letter_form.ShowDialog();
+            }
             
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoginAndRegistrationForm lrf = new LoginAndRegistrationForm();
+            lrf.ShowDialog();
+            if (User.CurrentID == -1)
+                Application.Exit();
+
+        }
+
+        private void Refresh_button_Click(object sender, EventArgs e)
+        {
+            this.mailTableTableAdapter1.Fill(this.mailServiceDBDataSet1.MailTable);
         }
     }
 }

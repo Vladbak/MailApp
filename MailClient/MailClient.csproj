@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,10 +61,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MailDataSet.Designer.cs">
+    <Compile Include="LoginAndRegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginAndRegistrationForm.Designer.cs">
+      <DependentUpon>LoginAndRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailServiceDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MailDataSet.xsd</DependentUpon>
+      <DependentUpon>MailServiceDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +80,7 @@
     <Compile Include="Show_LetterForm.Designer.cs">
       <DependentUpon>Show_LetterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="Web References\MailService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginAndRegistrationForm.resx">
+      <DependentUpon>LoginAndRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,16 +107,16 @@
     <EmbeddedResource Include="Show_LetterForm.resx">
       <DependentUpon>Show_LetterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="MailDataSet.xsc">
-      <DependentUpon>MailDataSet.xsd</DependentUpon>
+    <None Include="MailServiceDBDataSet.xsc">
+      <DependentUpon>MailServiceDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="MailDataSet.xsd">
-      <SubType>Designer</SubType>
+    <None Include="MailServiceDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MailDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>MailServiceDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <None Include="MailDataSet.xss">
-      <DependentUpon>MailDataSet.xsd</DependentUpon>
+    <None Include="MailServiceDBDataSet.xss">
+      <DependentUpon>MailServiceDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,10 +143,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:59811/MailService.asmx">
+    <WebReferenceUrl Include="http://localhost:59242/MailService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MailService\</RelPath>
-      <UpdateFromURL>http://localhost:59811/MailService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:59242/MailService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
